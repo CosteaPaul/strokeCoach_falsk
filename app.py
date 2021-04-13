@@ -3,7 +3,7 @@ from flask import Flask
 app = Flask(__name__)
 
 @app.route('/')
-def upload_file():
+def upload():
    return render_template('upload.html')
 
 @app.route('/uploader', methods = ['GET', 'POST'])
