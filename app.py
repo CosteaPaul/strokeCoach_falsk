@@ -1,9 +1,17 @@
 from flask import Flask
+
 app = Flask(__name__)
 
 @app.route('/')
-def index():
-    return "<h1>Welcome to our server !!</h1>"
+def upload_file():
+   return render_template('upload.html')
+
+@app.route('/uploader', methods = ['GET', 'POST'])
+def upload_file():
+   if request.method == 'POST':
+      f = request.files['file']
+      #f.save(secure_filename(f.filename))
+      return f.read()
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
